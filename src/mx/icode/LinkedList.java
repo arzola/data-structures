@@ -1,8 +1,12 @@
 package mx.icode;
 
-class LinkedList {
+public class LinkedList {
 
     private Node Head;
+
+    public String printList() {
+        return "[HEAD {0}]";
+    }
 
     class Node {
 
@@ -28,7 +32,7 @@ class LinkedList {
 
         Node current = this.Head;
 
-        while(current.next!=null){
+        while (current.next != null) {
             current = current.next.next;
         }
 
