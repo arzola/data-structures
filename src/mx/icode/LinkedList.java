@@ -4,41 +4,47 @@ public class LinkedList {
 
     private Node Head;
 
-    public String printList() {
-        return "[HEAD {0}]";
-    }
-
     class Node {
 
         private int value;
-        public Node next = null;
+
+        public Node next;
 
         public Node(int value) {
+
             this.value = value;
         }
+
     }
 
-    public void LinkedList(Node head) {
-        this.Head = head;
+    public LinkedList(int value) {
+        super();
+        this.Head = new Node(value);
     }
 
-    public boolean append(int val) {
-
-        if (this.Head.next == null) {
-            Node next = new Node(val);
-            this.Head.next = next;
-            return true;
-        }
+    public LinkedList append(int val) {
 
         Node current = this.Head;
 
         while (current.next != null) {
-            current = current.next.next;
+            current = current.next;
         }
 
         current.next = new Node(val);
-        return true;
+        return this;
 
+    }
+
+    public String printList() {
+        Node current = this.Head;
+        StringBuilder listRepresentation = new StringBuilder("[HEAD {");
+        listRepresentation.append(current.value);
+        listRepresentation.append("}]");
+        while (current.next != null) {
+            current = current.next;
+            listRepresentation.append("->{").append(current.value).append("}");
+        }
+        return listRepresentation.toString();
     }
 
 }
