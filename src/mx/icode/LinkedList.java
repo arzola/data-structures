@@ -35,6 +35,21 @@ public class LinkedList {
 
     }
 
+    public LinkedList appendFirst(int val) {
+        Node temp = this.Head;
+        this.Head = new Node(val);
+        this.Head.next = temp;
+        return this;
+    }
+
+    public LinkedList replaceHead(int val) {
+        Node temp = this.Head;
+        this.Head = new Node(val);
+        this.Head.next = temp.next;
+        return this;
+    }
+
+
     public String printList() {
         Node current = this.Head;
         StringBuilder listRepresentation = new StringBuilder("[HEAD {");
