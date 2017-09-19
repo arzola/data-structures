@@ -49,6 +49,28 @@ public class LinkedList {
         return this;
     }
 
+    public LinkedList insertAtIndex(int index, int val) {
+        Node current = this.Head;
+        int currentIndex = 0;
+        if (index == 0) {
+            return this.appendFirst(val);
+        }
+        while (current.next != null) {
+            currentIndex++;
+            if (currentIndex == index) {
+                Node after = current.next;
+                Node prev = current;
+                prev.next = new Node(val);
+                prev.next.next = after;
+            }
+            current = current.next;
+        }
+        if (currentIndex < index) {
+            throw new NullPointerException();
+        }
+        return this;
+    }
+
 
     public String printList() {
         Node current = this.Head;
